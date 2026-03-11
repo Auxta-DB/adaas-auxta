@@ -16,6 +16,7 @@ function polyfillAlias(suffix: 'node' | 'browser') {
     '@auxta/polyfill/buffer':  join(polyfillDir, `buffer.${suffix}`),
     '@auxta/polyfill/net':     join(polyfillDir, `net.${suffix}`),
     '@auxta/polyfill/fs':      join(polyfillDir, `fs.${suffix}`),
+    '@auxta/polyfill/process': join(polyfillDir, `process.${suffix}`),
   };
 }
 

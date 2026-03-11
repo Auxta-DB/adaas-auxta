@@ -64,7 +64,8 @@
            "@auxta/polyfill/crypto": ["../src/polyfill/crypto.node"],
            "@auxta/polyfill/buffer": ["../src/polyfill/buffer.node"],
            "@auxta/polyfill/net":    ["../src/polyfill/net.node"],
-           "@auxta/polyfill/fs":     ["../src/polyfill/fs.node"]
+           "@auxta/polyfill/fs":     ["../src/polyfill/fs.node"],
+           "@auxta/polyfill/process":["../src/polyfill/process.node"]
         },
         /* ===============================
            Types

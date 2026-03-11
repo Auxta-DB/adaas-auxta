@@ -1,5 +1,7 @@
 
 
+import { env } from '@auxta/polyfill/process';
+
 export class GLOBAL_CONSTANTS {
 
     static get SERVER() {
@@ -15,8 +17,8 @@ export class GLOBAL_CONSTANTS {
      * The port on which the Auxta server will run.
      */
     private static get SERVER_PORT() {
-        return process.env.AUXTA_SERVER_PORT ?
-            parseInt(process.env.AUXTA_SERVER_PORT)
+        return env.AUXTA_SERVER_PORT ?
+            parseInt(env.AUXTA_SERVER_PORT)
             : 5656;
     }
     /**
@@ -24,21 +26,21 @@ export class GLOBAL_CONSTANTS {
      * Default is 'localhost'.
      */
     private static get SERVER_HOST() {
-        return process.env.AUXTA_SERVER_HOST || 'localhost';
+        return env.AUXTA_SERVER_HOST || 'localhost';
     }
     /**
      * The token for authentication with the Auxta server.
      * 
      */
     private static get SERVER_TOKEN() {
-        return process.env.AUXTA_SERVER_TOKEN || '';
+        return env.AUXTA_SERVER_TOKEN || '';
     }
 
     /**
      * Allows to set the custom client for better connections monitoring.
      */
     private static get SERVER_CLIENT() {
-        return process.env.AUXTA_SERVER_CLIENT || 'auxta-client'; // Default client name
+        return env.AUXTA_SERVER_CLIENT || 'auxta-client'; // Default client name
     }
 
 
@@ -49,8 +51,8 @@ export class GLOBAL_CONSTANTS {
     }
 
     static get SYNC() {
-        return process.env.AUXTA_DB_SYNC ?
-            process.env.AUXTA_DB_SYNC === 'true' || process.env.AUXTA_DB_SYNC === '1' || process.env.AUXTA_DB_SYNC === 'yes'
+        return env.AUXTA_DB_SYNC ?
+            env.AUXTA_DB_SYNC === 'true' || env.AUXTA_DB_SYNC === '1' || env.AUXTA_DB_SYNC === 'yes'
             : true; // Default to true if not set
     }
 
@@ -66,8 +68,8 @@ export class GLOBAL_CONSTANTS {
      * Default is 5.
      */
     private static get CONNECTION_POOL_SIZE() {
-        return process.env.AUXTA_POOL_SIZE ?
-            parseInt(process.env.AUXTA_POOL_SIZE)
+        return env.AUXTA_POOL_SIZE ?
+            parseInt(env.AUXTA_POOL_SIZE)
             : 5; // Default pool size is 5
     }
     /**
@@ -75,8 +77,8 @@ export class GLOBAL_CONSTANTS {
      * Default is 5000 ms.
      */
     private static get CONNECTION_POOL_TIMEOUT() {
-        return process.env.AUXTA_POOL_TIMEOUT ?
-            parseInt(process.env.AUXTA_POOL_TIMEOUT)
+        return env.AUXTA_POOL_TIMEOUT ?
+            parseInt(env.AUXTA_POOL_TIMEOUT)
             : 5000; // Default timeout is 5000 ms
     }
 
@@ -88,7 +90,7 @@ export class GLOBAL_CONSTANTS {
 
 
     private static get LOG_LEVEL() {
-        return (process.env.AUXTA_LOG_LEVEL as 'debug' | 'info' | 'warn' | 'error' | 'silent') || 'info'; // Options: 'info', 'warn', 'error'
+        return (env.AUXTA_LOG_LEVEL as 'debug' | 'info' | 'warn' | 'error' | 'silent') || 'info'; // Options: 'info', 'warn', 'error'
     }
 
 }

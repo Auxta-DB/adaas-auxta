@@ -27,6 +27,7 @@ const config: Config.InitialOptions = {
         "@auxta/polyfill/buffer": ["<rootDir>/src/polyfill/buffer.node"],
         "@auxta/polyfill/net":    ["<rootDir>/src/polyfill/net.node"],
         "@auxta/polyfill/fs":     ["<rootDir>/src/polyfill/fs.node"],
+        "@auxta/polyfill/process":["<rootDir>/src/polyfill/process.node"],
     }
 
 };

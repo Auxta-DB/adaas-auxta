@@ -1,4 +1,5 @@
 import { pathResolve, fileExists, readFile } from '@auxta/polyfill/fs';
+import { env } from '@auxta/polyfill/process';
 import { AuxtaLogger } from './Logger.service';
 
 export class EnvUtil {
@@ -23,8 +24,8 @@ export class EnvUtil {
             const key = trimmed.slice(0, eqIndex).trim();
             const value = trimmed.slice(eqIndex + 1).trim().replace(/^['"]|['"]$/g, '');
 
-            if (!process.env.hasOwnProperty(key)) {
-                process.env[key] = value;
+            if (!Object.prototype.hasOwnProperty.call(env, key)) {
+                env[key] = value;
             }
         });
     }

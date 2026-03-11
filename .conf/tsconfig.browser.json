@@ -19,7 +19,8 @@
          "@auxta/polyfill/crypto": ["src/polyfill/crypto.browser"],
          "@auxta/polyfill/buffer": ["src/polyfill/buffer.browser"],
          "@auxta/polyfill/net":    ["src/polyfill/net.browser"],
-         "@auxta/polyfill/fs":     ["src/polyfill/fs.browser"]
+         "@auxta/polyfill/fs":     ["src/polyfill/fs.browser"],
+         "@auxta/polyfill/process":["src/polyfill/process.browser"]
 
       },
    },
