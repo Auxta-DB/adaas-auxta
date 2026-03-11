@@ -1,6 +1,6 @@
 {
   "name": "@adaas/auxta",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Auxta SDK is a library to interact with Auxta, an AI-powered vector database. It provides a simple and intuitive interface for developers to perform operations such as querying, inserting, and managing data in Auxta.",
   "license": "Apache-2.0",
   "author": {
