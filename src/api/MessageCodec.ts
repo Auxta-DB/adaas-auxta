@@ -1,5 +1,6 @@
 import { AUXTA_CLIENT_HEADER_SIZES } from "@auxta/constants/AuxtaClient.constants";
 import { AuxtaServerRequest, AuxtaServerResponse } from "@auxta/types/AuxtaClient.types";
+import { Buffer } from '@auxta/polyfill/buffer';
 
 
 

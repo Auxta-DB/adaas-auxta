@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+import { createHash, randomUUID } from '@auxta/polyfill/crypto';
 import { AuxtaDimension } from './AuxtaDimension';
 import { AuxtaSerializedVector, AuxtaVectorConstructorProps, AuxtaVectorDefinition } from '@auxta/types/AuxtaVector.types';
 import { AuxtaComputedDimension } from './dimensions/AuxtaComputedDimension.class';
@@ -18,7 +18,7 @@ import { AUXTA_VECTOR_METADATA_KEY } from '@auxta/metadata/Dimensions.meta';
  */
 export class AuxtaVector<T extends object> {
 
-    id: string = `auxv:v1--${crypto.randomUUID()}`; //  Unique identifier for the vector, generated using UUID
+    id: string = `auxv:v1--${randomUUID()}`;
 
     constructor(vector: AuxtaVectorDefinition)
     constructor(vector: AuxtaVectorConstructorProps<T>)
@@ -162,7 +162,7 @@ export class AuxtaVector<T extends object> {
             throw AuxtaVectorError.vectorIndexNotDefinedError(this.name);
 
         return {
-            id: crypto.createHash('sha256').update(this.name).digest('hex').slice(0, 16),
+            id: createHash('sha256').update(this.name).digest('hex').slice(0, 16),
             name: this.name,
             dimensions: this.dimensions.map((dimension) => dimension.toDefinition()),
         }

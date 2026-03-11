@@ -1,4 +1,23 @@
 import { defineConfig } from "tsup";
+import { fileURLToPath } from "url";
+import { dirname, join, resolve } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+/**
+ * Resolve @auxta/polyfill/* aliases.
+ * Each build supplies its own suffix so tsup/esbuild picks the correct file.
+ */
+function polyfillAlias(suffix: 'node' | 'browser') {
+  const polyfillDir = resolve(__dirname, 'src/polyfill');
+  return {
+    '@auxta/polyfill/crypto':  join(polyfillDir, `crypto.${suffix}`),
+    '@auxta/polyfill/buffer':  join(polyfillDir, `buffer.${suffix}`),
+    '@auxta/polyfill/net':     join(polyfillDir, `net.${suffix}`),
+    '@auxta/polyfill/fs':      join(polyfillDir, `fs.${suffix}`),
+  };
+}
 
 export default defineConfig([
   /**
@@ -52,7 +71,15 @@ export default defineConfig([
       return {
         js: ".mjs"
       };
-    }
+    },
+
+    // Swap polyfill implementations for browser
+    esbuildOptions(options) {
+      options.alias = {
+        ...options.alias,
+        ...polyfillAlias('browser'),
+      };
+    },
   },
 
   /**
@@ -106,6 +133,14 @@ export default defineConfig([
       return {
         js: format === "esm" ? ".mjs" : ".cjs"
       };
-    }
+    },
+
+    // Swap polyfill implementations for node
+    esbuildOptions(options) {
+      options.alias = {
+        ...options.alias,
+        ...polyfillAlias('node'),
+      };
+    },
   },
 ]);

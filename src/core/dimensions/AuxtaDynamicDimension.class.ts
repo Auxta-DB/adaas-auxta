@@ -1,6 +1,6 @@
 import { AuxtaDynamicDimensionDefinition, DynamicDimensionConstructorConfig } from "@auxta/types/AuxtaDimension.types";
 import { AuxtaDimension } from "../AuxtaDimension";
-import crypto from 'crypto';
+import { createHash } from '@auxta/polyfill/crypto';
 import { AuxtaDimensionError } from "@auxta/errors/AuxtaDimension.error";
 
 
@@ -73,7 +73,7 @@ export class AuxtaDynamicDimension<T extends any = any> extends AuxtaDimension<T
     get id() {
         const input = `${this.name}_${String(this.config.scope)}_${String(this.index)}_${String(this.vector)}`
 
-        return crypto.createHash('sha256').update(input).digest('hex').slice(0, 16);
+        return createHash('sha256').update(input).digest('hex').slice(0, 16);
     }
 
 

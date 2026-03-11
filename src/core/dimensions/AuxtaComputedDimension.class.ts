@@ -1,6 +1,6 @@
 import { AuxtaComputedDimensionDefinition, AuxtaDimensionDefinition, ComputedDimensionConstructorConfig, DimensionConstructorBaseConfig } from "@auxta/types/AuxtaDimension.types";
 import { AuxtaDimension } from "../AuxtaDimension";
-import crypto from 'crypto';
+import { createHash } from '@auxta/polyfill/crypto';
 import { AuxtaDimensionError } from "@auxta/errors/AuxtaDimension.error";
 
 
@@ -57,7 +57,7 @@ export class AuxtaComputedDimension<T extends any = any> extends AuxtaDimension<
     get id() {
         const input = `${String(this.formula)}`
 
-        return crypto.createHash('sha256').update(input).digest('hex').slice(0, 16);
+        return createHash('sha256').update(input).digest('hex').slice(0, 16);
     }
 
 

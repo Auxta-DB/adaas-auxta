@@ -1,37 +1,12 @@
 {
-  "compileOnSave": false,
+  "extends": "./.conf/tsconfig.base.json",
+
   "compilerOptions": {
-    "outDir": "dist",
-    "declaration": true,
-    "emitDeclarationOnly": false,
-    "stripInternal": false,
-    "strict": true,
-    "noImplicitAny": false,
-    "noFallthroughCasesInSwitch": true,
-    "downlevelIteration": true,
-    "strictFunctionTypes": true,
-    "strictNullChecks": true,
-    "strictPropertyInitialization": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "noErrorTruncation": true,
-    "jsx": "react",
-    "target": "ES6",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "removeComments": false,
-    "preserveConstEnums": true,
-    "sourceMap": true,
+    "rootDir": "./",
     "baseUrl": ".",
-    "experimentalDecorators": true,
-    "skipLibCheck": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    /* ===============================
+       Internal aliases (DEV ONLY)
+       =============================== */
     "paths": {
       "@auxta/lib/*": ["src/lib/*"],
       "@auxta/types/*": ["src/types/*"],
@@ -42,25 +17,33 @@
       "@auxta/constants/*": ["src/constants/*"],
       "@auxta/core/*": ["src/core/*"],
       "@auxta/metadata/*": ["src/metadata/*"],
-      "@auxta/decorators/*": ["src/decorators/*"]
+      "@auxta/decorators/*": ["src/decorators/*"],
+      "@auxta/polyfill/crypto": ["src/polyfill/crypto.node"],
+      "@auxta/polyfill/buffer": ["src/polyfill/buffer.node"],
+      "@auxta/polyfill/net":    ["src/polyfill/net.node"],
+      "@auxta/polyfill/fs":     ["src/polyfill/fs.node"]
     },
-    "lib": [
-      "dom",
-      "esnext.asynciterable",
-      "es2015",
-      "es2016",
-      "es2017.object"
-    ]
+
+    /* ===============================
+       Types
+       =============================== */
+    "types": [
+      "node",
+      "jest",
+      "mocha",
+    ],
+    "typeRoots": ["node_modules/@types"]
   },
+
   "include": [
     "src/**/*",
-    "tests/**/*", 
-    "examples/**/*", 
-    "index.ts"  
+    "tests/**/*",
+    "examples/**/*.ts",
+    "src/index.ts"
   ],
+
   "exclude": [
-    "node_modules/**/*",
-    "dist/**/*",
-    "node_modules/@types/mocha/index.d.ts"
+    "node_modules",
+    "dist",
   ]
 }

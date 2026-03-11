@@ -1,15 +1,16 @@
-import net from 'net';
+import { Socket } from '@auxta/polyfill/net';
+import { Buffer } from '@auxta/polyfill/buffer';
 import { MessageCodec } from './MessageCodec';
 import { AuxtaServerRequest, AuxtaServerResponse } from '@auxta/types/AuxtaClient.types';
 import { AuxtaError } from '@auxta/errors/AuxtaError.class';
 import { AUXTA_CLIENT_HEADER_SIZES } from '@auxta/constants/AuxtaClient.constants';
 
 export class TCPClient {
-    private socket: net.Socket;
+    private socket: Socket;
     private buffer = Buffer.alloc(0);
 
     constructor(private host: string, private port: number) {
-        this.socket = new net.Socket();
+        this.socket = new Socket();
     }
 
     connect(): Promise<void> {

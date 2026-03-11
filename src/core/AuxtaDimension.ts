@@ -2,7 +2,8 @@ import { AuxtaDimensionTypeSizeMap, AuxtaDimensionValueType } from '@auxta/const
 import { AuxtaDimensionError } from '@auxta/errors/AuxtaDimension.error';
 import { AUXTA_DIMENSION_INDEX_METADATA_KEY, AUXTA_DIMENSION_VECTOR_METADATA_KEY } from '@auxta/metadata/Dimensions.meta';
 import { AuxtaDimensionDefinition, DimensionConstructorBaseConfig, IDimension } from '@auxta/types/AuxtaDimension.types';
-import crypto from 'crypto';
+import { createHash } from '@auxta/polyfill/crypto';
+import { byteLength } from '@auxta/polyfill/buffer';
 
 
 
@@ -27,7 +28,7 @@ export class AuxtaDimension<T extends any = any> implements IDimension<T> {
     /**
      * Priority of the dimension, used for sorting and matching.
      */
-    get priority (): number {
+    get priority(): number {
         return this.config.priority || 0;
     }
 
@@ -146,7 +147,7 @@ export class AuxtaDimension<T extends any = any> implements IDimension<T> {
     get id() {
         const input = `${this.name}`;
 
-        return crypto.createHash('sha256').update(input).digest('hex').slice(0, 16);
+        return createHash('sha256').update(input).digest('hex').slice(0, 16);
     }
 
     /**
@@ -157,7 +158,7 @@ export class AuxtaDimension<T extends any = any> implements IDimension<T> {
         if (sizeSource === null || sizeSource === undefined) return 0;
         const targetSize = AuxtaDimensionTypeSizeMap[this.type]!
 
-        const realSize = Buffer.byteLength(sizeSource, 'utf8')
+        const realSize = byteLength(sizeSource, 'utf8')
 
         return realSize > targetSize ? targetSize : realSize;
     }
@@ -167,7 +168,7 @@ export class AuxtaDimension<T extends any = any> implements IDimension<T> {
         const value = this.toVec();
         if (value === null || value === undefined) return 0;
         const sizeSource = JSON.stringify(value);
-        return Buffer.byteLength(sizeSource, 'utf8');
+        return byteLength(sizeSource, 'utf8');
     }
 
 

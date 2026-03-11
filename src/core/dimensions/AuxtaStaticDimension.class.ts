@@ -1,6 +1,6 @@
 import { AuxtaStaticDimensionDefinition, StaticDimensionConstructorConfig } from "@auxta/types/AuxtaDimension.types";
 import { AuxtaDimension } from "../AuxtaDimension";
-import crypto from 'crypto';
+import { createHash } from '@auxta/polyfill/crypto';
 
 
 
@@ -40,7 +40,7 @@ export class AuxtaStaticDimension<T extends any = any> extends AuxtaDimension<T>
     get id() {
         const input = `${this.name}_${String(this.index)}_${String(this.vector)}`
 
-        return crypto.createHash('sha256').update(input).digest('hex').slice(0, 16);
+        return createHash('sha256').update(input).digest('hex').slice(0, 16);
     }
 
 

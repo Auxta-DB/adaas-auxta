@@ -1,0 +1,82 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+
+    "compilerOptions": {
+        "rootDir": "../",
+        "useDefineForClassFields": false,
+        // "isolatedModules": true,
+
+        /* ===============================
+           Output (tsup controls formats)
+           =============================== */
+        "outDir": "dist",
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true,
+        "emitDeclarationOnly": false,
+
+        /* ===============================
+           Language & runtime
+           =============================== */
+        "target": "ES2022",
+        "lib": ["ES2022", "DOM"],
+
+        /* ===============================
+           Module system (CRITICAL)
+           =============================== */
+        "module": "nodenext",
+        "moduleResolution": "NodeNext",
+
+        /* ===============================
+           Interop & compatibility
+           =============================== */
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+
+        /* ===============================
+           Type checking
+           =============================== */
+        "strict": true,
+        "noImplicitAny": false,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictPropertyInitialization": true,
+        "noFallthroughCasesInSwitch": true,
+
+        /* ===============================
+           Developer experience
+           =============================== */
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "noErrorTruncation": true,
+
+        /* ===============================
+           Decorators (if used)
+           =============================== */
+        "experimentalDecorators": true,
+
+        /* ===============================
+           Internal path aliases ONLY
+           =============================== */
+        "baseUrl": ".",
+        "paths": {
+           "@auxta/polyfill/crypto": ["../src/polyfill/crypto.node"],
+           "@auxta/polyfill/buffer": ["../src/polyfill/buffer.node"],
+           "@auxta/polyfill/net":    ["../src/polyfill/net.node"],
+           "@auxta/polyfill/fs":     ["../src/polyfill/fs.node"]
+        },
+        /* ===============================
+           Types
+           =============================== */
+        // "typeRoots": ["node_modules/@types"]
+    },
+    "include": [
+        "../src/**/*",
+    ],
+    "exclude": [
+        "../node_modules",
+        "../dist",
+        "**/*.spec.ts"
+    ]
+}

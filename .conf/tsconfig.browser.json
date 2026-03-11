@@ -1,0 +1,26 @@
+{
+   "extends": "./tsconfig.base.json",
+   "compilerOptions": {
+      "rootDir": "../",
+      "outDir": "dist/browser",
+      "baseUrl": "../",
+
+      "paths": {
+         "@auxta/lib/*": ["src/lib/*"],
+         "@auxta/types/*": ["src/types/*"],
+         "@auxta/api/*": ["src/api/*"],
+         "@auxta/classes/*": ["src/classes/*"],
+         "@auxta/utils/*": ["src/utils/*"],
+         "@auxta/errors/*": ["src/errors/*"],
+         "@auxta/constants/*": ["src/constants/*"],
+         "@auxta/core/*": ["src/core/*"],
+         "@auxta/metadata/*": ["src/metadata/*"],
+         "@auxta/decorators/*": ["src/decorators/*"],
+         "@auxta/polyfill/crypto": ["src/polyfill/crypto.browser"],
+         "@auxta/polyfill/buffer": ["src/polyfill/buffer.browser"],
+         "@auxta/polyfill/net":    ["src/polyfill/net.browser"],
+         "@auxta/polyfill/fs":     ["src/polyfill/fs.browser"]
+
+      },
+   },
+}

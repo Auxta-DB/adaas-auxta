@@ -71,7 +71,6 @@
     "test:integration": "jest tests/integration"
   },
   "dependencies": {
-    "@adaas/a-concept": "^0.3.2"
   },
   "devDependencies": {
     "@types/chai": "^4.3.14",

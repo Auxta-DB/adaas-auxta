@@ -1,17 +1,16 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import { pathResolve, fileExists, readFile } from '@auxta/polyfill/fs';
 import { AuxtaLogger } from './Logger.service';
 
 export class EnvUtil {
     static load(envPath: string = '.env') {
-        const absolutePath = path.resolve(process.cwd(), envPath);
+        const absolutePath = pathResolve(process.cwd(), envPath);
 
-        if (!fs.existsSync(absolutePath)) {
+        if (!fileExists(absolutePath)) {
             AuxtaLogger.warn(`[env-loader] No .env file found at ${absolutePath}`);
             return;
         }
 
-        const content = fs.readFileSync(absolutePath, 'utf-8');
+        const content = readFile(absolutePath);
 
         content.split('\n').forEach((line) => {
             const trimmed = line.trim();

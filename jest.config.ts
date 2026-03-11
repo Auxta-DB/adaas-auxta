@@ -21,9 +21,12 @@ const config: Config.InitialOptions = {
         "@auxta/utils/(.*)": ["<rootDir>/src/utils/$1"],
         "@auxta/errors/(.*)": ["<rootDir>/src/errors/$1"],
         "@auxta/core/(.*)": ["<rootDir>/src/core/$1"],
-        "@auxta/decorators/(.*)": ["<rootDir>/src/decorators/$1"],
+        "@auxta/decorators/(.*)":  ["<rootDir>/src/decorators/$1"],
         "@auxta/metadata/(.*)": ["<rootDir>/src/metadata/$1"],
-
+        "@auxta/polyfill/crypto": ["<rootDir>/src/polyfill/crypto.node"],
+        "@auxta/polyfill/buffer": ["<rootDir>/src/polyfill/buffer.node"],
+        "@auxta/polyfill/net":    ["<rootDir>/src/polyfill/net.node"],
+        "@auxta/polyfill/fs":     ["<rootDir>/src/polyfill/fs.node"],
     }
 
 };
