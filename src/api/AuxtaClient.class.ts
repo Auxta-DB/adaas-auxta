@@ -1,7 +1,6 @@
 import net from 'net';
 import { MessageCodec } from './MessageCodec';
 import { AuxtaServerRequest, AuxtaServerResponse } from '@auxta/types/AuxtaClient.types';
-import { AuxtaLogger } from '@auxta/utils/Logger.service';
 import { AuxtaError } from '@auxta/errors/AuxtaError.class';
 import { AUXTA_CLIENT_HEADER_SIZES } from '@auxta/constants/AuxtaClient.constants';
 
